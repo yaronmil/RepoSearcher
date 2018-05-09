@@ -6,19 +6,31 @@ using System.Security.Cryptography;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.ModelBinding;
- 
+using RepoSearcherBe.Models;
+
 
 namespace RepoSearcherBe.Controllers
 {
-    [System.Web.Mvc.RoutePrefix("api/gitRepo")]
+    [RoutePrefix("api/GitRepo")]
+    [EnableCors(origins: "http://localhost:4200", headers: "*", methods: "*")]
     public class GitRepoController : ApiController
     {
-        [Route("BookMark")]
+        private List<GitRepo> _db;
+
+        public IHttpActionResult BookMark([FromBody] GitRepo repo)
+        {
+            _db = HttpContext.Current.Session["db"] as List<GitRepo> ?? new List<GitRepo>();
+            _db.Add(repo);
+            HttpContext.Current.Session["db"] = _db;
+            return Ok();
+        }
+        [System.Web.Http.HttpGet]
         public IHttpActionResult BookMark()
         {
-           
-            return Ok();
+            _db = HttpContext.Current.Session["db"] as List<GitRepo> ?? new List<GitRepo>();
+            return Ok(_db);
         }
     }
 }

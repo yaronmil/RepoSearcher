@@ -49,3 +49,6 @@ D:\isracard\RepoSearcherBe\RepoSearcherBe\obj\Debug\RepoSearcherBe.pdb
 D:\isracard\RepoSearcherBe\RepoSearcherBe\bin\Castle.Core.dll
 D:\isracard\RepoSearcherBe\RepoSearcherBe\bin\Restfulie.Server.dll
 D:\isracard\RepoSearcherBe\RepoSearcherBe\bin\Castle.Core.xml
+D:\isracard\RepoSearcherBe\RepoSearcherBe\bin\System.Web.Cors.dll
+D:\isracard\RepoSearcherBe\RepoSearcherBe\bin\System.Web.Http.Cors.dll
+D:\isracard\RepoSearcherBe\RepoSearcherBe\bin\System.Web.Http.Cors.xml

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Security.Claims;
 using System.Security.Cryptography;
@@ -26,11 +27,19 @@ namespace RepoSearcherBe.Controllers
             HttpContext.Current.Session["db"] = _db;
             return Ok();
         }
-        [System.Web.Http.HttpGet]
+        [HttpGet]
         public IHttpActionResult BookMark()
         {
             _db = HttpContext.Current.Session["db"] as List<GitRepo> ?? new List<GitRepo>();
             return Ok(_db);
+        }
+        [HttpDelete]
+        public IHttpActionResult BookMark(int id)
+        {
+            _db = HttpContext.Current.Session["db"] as List<GitRepo> ?? new List<GitRepo>();
+            _db = _db.Where(d => d.id != id).ToList();
+            HttpContext.Current.Session["db"] = _db;
+            return Ok();
         }
     }
 }

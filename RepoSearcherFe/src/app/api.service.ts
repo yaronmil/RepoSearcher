@@ -3,7 +3,7 @@ import { GitRepo } from './git-repo';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
-const apiUrl = 'http://localhost:59425/api/GitRepo';
+const apiUrl = '/api/GitRepo';
 const httpOptions = {
   headers: new HttpHeaders().set('Content-Type', 'application/json').set('Access-Control-Allow-Origin', '*' )
 };
@@ -13,8 +13,11 @@ const httpOptions = {
 export class ApiService {
 
   constructor(private httpClinet: HttpClient ) {}
+  UnMark(id: number) {
+   return this.httpClinet.delete(`${apiUrl}/${id}`, httpOptions);
+  }
   addBookMark(repo: GitRepo) {
-    this.httpClinet.post(apiUrl, repo, httpOptions).subscribe();
+    return this.httpClinet.post(apiUrl, repo, httpOptions);
   }
   getMarks(): Observable<GitRepo[]> {
     return this.httpClinet.get<GitRepo[]>(apiUrl, httpOptions);

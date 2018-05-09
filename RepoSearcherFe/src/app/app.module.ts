@@ -8,12 +8,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { ApiService } from './api.service';
 import { AppRoutingModule } from './app-routing.module';
 import { BokkmarkedComponent } from './bokkmarked/bokkmarked.component';
+import { GitRepoDetailsComponent } from './git-repo-details/git-repo-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchComponent,
-    BokkmarkedComponent
+    BokkmarkedComponent,
+    GitRepoDetailsComponent
   ],
   imports: [
     BrowserModule,

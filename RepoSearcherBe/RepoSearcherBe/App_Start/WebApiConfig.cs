@@ -14,8 +14,7 @@ namespace RepoSearcherBe
     {
         public static void Register(HttpConfiguration config)
         {
-            config.EnableCors();
-
+             
             // Web API routes
             var httpControllerRouteHandler = typeof(HttpControllerRouteHandler).GetField("_instance",
                 System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.NonPublic);

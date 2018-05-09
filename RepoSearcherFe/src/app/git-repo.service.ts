@@ -20,7 +20,7 @@ export class GitRepoService {
         const apiItems: any[] = gitpiResult.items || [];
         return apiItems.map(apiItem => {
           const retVal: GitRepo = {
-            id: apiItem.id, name: apiItem.name, avatar_url: apiItem.owner.avatar_url,isBookMarked:false
+            id: apiItem.id, name: apiItem.name, avatar_url: apiItem.owner.avatar_url, isBookMarked: false
           };
           return retVal;
         });

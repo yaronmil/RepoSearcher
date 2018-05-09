@@ -11,15 +11,13 @@ import { GitRepo } from '../git-repo';
 })
 export class SearchComponent implements OnInit {
 
+  gitRepos: GitRepo[];
   constructor(private gitRepoService: GitRepoService, private apiService: ApiService) { }
   gitRepos$: Observable<GitRepo[]>;
   ngOnInit() {
   }
   search(repoNameToSearch: string) {
-    this.gitRepos$ = this.gitRepoService.searchGitRepos(repoNameToSearch);
+     this.gitRepoService.searchGitRepos(repoNameToSearch).subscribe(d => this.gitRepos = d);
   }
-  bookMarkRepo(repo: GitRepo) {
-    repo.isBookMarked = true;
-    this.apiService.addBookMark(repo);
-  }
+
 }

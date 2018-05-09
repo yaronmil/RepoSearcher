@@ -1,23 +1,10 @@
 <div class="container-fluid">
   <form (keydown.enter)="$event.preventDefault()" class="form-inline my-2 mx-auto  " style="width:300px;">
-    <input #inputSearch (keyup.enter)="search(inputSearch.value)" class="form-control" type="search" placeholder="Search GitHub repos"
+    <input #inputSearch (keyup.enter)="search(inputSearch.value)" class="form-control " focu type="search" placeholder="Search GitHub repos"
       aria-label="Search" value="milstein">
     <button type="button" class="btn btn-outline-success ml-2 my-2 " (click)="search(inputSearch.value)">Search</button>
   </form>
 </div>
-<div class="container">
-  <div class="card bg-warning text-white" *ngIf='(gitRepos$ | async)?.length==0'>
-    <div class="card-body">no results found</div>
-  </div>
-<div class="card-columns">
 
-  <div class="card"   *ngFor='let repo of gitRepos$ | async'>
-    <img class="card-img-top" src="{{repo.avatar_url}}" alt="image" style="width:100%">
-    <div class="card-body">
-      <h4 class="card-title">{{repo.name}}</h4>
-      <!-- <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p> -->
-      <button type="button" (click)="bookMarkRepo(repo)"    class="btn btn-primary">Book Mark</button>
-    </div>
-  </div>
-</div>
-</div>
+  <app-git-repo-details [gitRepos]="gitRepos"></app-git-repo-details>
+

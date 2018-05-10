@@ -9,7 +9,7 @@
     <div class="card-body">
       <h4 class="card-title">{{repo.name}}</h4>
       <!-- <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p> -->
-      <button *ngIf="!repo.isBookMarked" type="button" (click)="bookMarkRepo(repo)" class="btn btn-primary">Book Mark</button>
+      <button *ngIf="!repo.isBookMarked" type="button" (click)="bookMarkRepo(repo)" class="btn btn-primary">BookMark</button>
       <button *ngIf="repo.isBookMarked" type="button" (click)="UnMarkRepo(repo)" class="btn btn-primary">Un Mark</button>
     </div>
   </div>

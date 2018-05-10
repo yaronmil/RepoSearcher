@@ -1,10 +1,8 @@
 <div class="container-fluid">
   <form (keydown.enter)="$event.preventDefault()" class="form-inline my-2 mx-auto  " style="width:300px;">
     <input #inputSearch (keyup.enter)="search(inputSearch.value)" class="form-control " focu type="search" placeholder="Search GitHub repos"
-      aria-label="Search" value="milstein">
+      aria-label="Search">
     <button type="button" class="btn btn-outline-success ml-2 my-2 " (click)="search(inputSearch.value)">Search</button>
   </form>
 </div>
-
-  <app-git-repo-details [gitRepos]="gitRepos"></app-git-repo-details>
-
+<app-git-repo-details [gitRepos]="gitRepos"></app-git-repo-details>

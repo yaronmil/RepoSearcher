@@ -2,6 +2,7 @@ import { ApiService } from './../api.service';
 import { GitRepo } from './../git-repo';
 import { Observable } from 'rxjs';
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-git-repo-details',
@@ -10,12 +11,9 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class GitRepoDetailsComponent implements OnInit {
   @Input()
-  // public gitRepos$: Observable<GitRepo[]>;
-
   gitRepos: GitRepo[];
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private router: Router ) { }
   ngOnInit() {
-    // this.gitRepos$.subscribe(d => this.gitRepos = d);
   }
   bookMarkRepo(repo: GitRepo) {
     repo.isBookMarked = true;
@@ -23,7 +21,11 @@ export class GitRepoDetailsComponent implements OnInit {
   }
   UnMarkRepo(repo: GitRepo) {
     this.apiService.UnMark(repo.id).subscribe();
-    this.gitRepos = this.gitRepos.filter(g => g.id !== repo.id);
+    if ( this.router.url === '/bookmarked') {
+      this.gitRepos = this.gitRepos.filter(g => g.id !== repo.id);
+    } else {
+      repo.isBookMarked = false;
+    }
   }
 
 }
